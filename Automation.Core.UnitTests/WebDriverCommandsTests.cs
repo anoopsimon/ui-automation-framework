@@ -3,10 +3,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Automation.Core.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class WebDriverCommandsTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void VerifyCLick()
         {
         }
     }
