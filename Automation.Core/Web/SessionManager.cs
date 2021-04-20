@@ -1,6 +1,7 @@
 ﻿using Automation.Core.Enums;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.DevTools;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,8 @@ namespace Automation.Core.Web
             switch (browser)
             {
                 case Browser.CHROME:
-                    return new RemoteWebDriver(new Uri(gridUrl), ChromeOptions());
+                    this.driver= new RemoteWebDriver(new Uri(gridUrl), ChromeOptions());
+                    return driver;
                 default:
                     throw new FrameworkException($"{browser} support not implemented");
             }
@@ -58,8 +60,14 @@ namespace Automation.Core.Web
 
         public IWebDriver LocalSession()
         {
-            var driver = new ChromeDriver(ChromeOptions());
-            return driver;
+            this.driver = new ChromeDriver(ChromeOptions()) ;
+            return this.driver;
+        }
+
+
+        public DevToolsSession GetDevToolSesion()
+        {
+            return ((ChromeDriver)this.driver).GetDevToolsSession();
         }
 
 
