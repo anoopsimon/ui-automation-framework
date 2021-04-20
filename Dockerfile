@@ -12,4 +12,4 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet build
 
-RUN dotnet test --logger:trx
+RUN dotnet test Automation.Core.UnitTests --logger:trx
