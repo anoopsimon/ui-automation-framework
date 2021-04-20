@@ -21,8 +21,8 @@ namespace Automation.UI.Tests.Steps
         public void GivenILaunchBrowser(string browserName)
         {      
 
-            var session = new SessionManager(false,"",Browser.CHROME);
-            //var session = new SessionManager(true,"http://localhost:4444/wd/hub",Browser.CHROME);
+           // var session = new SessionManager(false,"",Browser.CHROME);
+            var session = new SessionManager(true,"http://localhost:4444/wd/hub",Browser.CHROME);
            var driver= session.CreateSession();
             driver.Url = "https://www.bing.com/";
             var address = session.GetDevToolSesion().EndpointAddress;
