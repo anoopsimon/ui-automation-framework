@@ -10,7 +10,7 @@ namespace Automation.Core
             get { return GetAppConfig(key); }
         }
 
-        private string GetAppConfig(string key)
+       private string GetAppConfig(string key)
         {
             IConfigurationBuilder builder = new ConfigurationBuilder();
             builder.AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "appsettings.json"));

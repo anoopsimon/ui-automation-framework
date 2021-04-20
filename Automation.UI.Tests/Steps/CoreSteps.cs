@@ -9,13 +9,19 @@ namespace Automation.UI.Tests.Steps
     [Binding]
     public class CoreSteps
     {
+        public readonly AppSettings AppSettings;
+
+        public CoreSteps()
+        {
+            AppSettings = new AppSettings();
+        }
         [StepDefinition(@"I launch '(.*)' browser")]
         public void GivenILaunchBrowser(string browserName)
         {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "https://wwww.bing.com";
             driver.Quit();
-            string k = new AppSettings()["secrets:keyvault"];
+            string k = AppSettings["secrets:keyvault"];
             Console.WriteLine(k);
         }
     }
