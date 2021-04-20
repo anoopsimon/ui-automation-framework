@@ -25,6 +25,7 @@ namespace Automation.Core.Web
 
         public void Click(By locator) 
         {
+            if (GetElement(locator) is null) throw new FrameworkException($"Cannot click on element {locator} as element found found page.");
             GetElement(locator).Click();
         }
 

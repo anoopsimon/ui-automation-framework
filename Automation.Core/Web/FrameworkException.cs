@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Automation.Core.Web
 {
     [Serializable]
-    internal class FrameworkException : Exception
+    public class FrameworkException : Exception
     {
         public FrameworkException()
         {
