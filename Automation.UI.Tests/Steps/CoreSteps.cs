@@ -1,4 +1,6 @@
 ﻿using Automation.Core;
+using Automation.Core.Enums;
+using Automation.Core.Web;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
@@ -17,12 +19,15 @@ namespace Automation.UI.Tests.Steps
         }
         [StepDefinition(@"I launch '(.*)' browser")]
         public void GivenILaunchBrowser(string browserName)
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Url = "https://wwww.bing.com";
-            driver.Quit();
-            string k = AppSettings["secrets:keyvault"];
-            Console.WriteLine(k);
+        {      
+
+            var session = new SessionManager(true,"http://localhost:4444/wd/hub",Browser.CHROME);
+           var driver= session.CreateSession();
+            driver.Url = "https://www.bing.com/";
+            var commands = new Commands(driver);
+            commands.Type(By.CssSelector("#sb_form_q"),"automation");
+            commands.Click(By.CssSelector("label[for='sb_form_go']"));
+            
         }
     }
 }
