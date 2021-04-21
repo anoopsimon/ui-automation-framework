@@ -6,7 +6,7 @@ using OpenQA.Selenium;
 namespace Automation.Core.UnitTests
 {
     [TestClass]
-    public class WebDriverCommandsTests
+    public class WebDriverCommandTest
     {
 
 
