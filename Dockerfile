@@ -1,10 +1,10 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 
-WORKDIR /Automation.Core
+WORKDIR /src
 
-COPY ./*.sln ./
+COPY /src/*.sln ./
 
-COPY */*.csproj ./
+COPY /src/*/*.csproj ./
 RUN for file in $(ls *.csproj); do mkdir -p ${file%.*} && mv $file ${file%.*}; done
 RUN dotnet restore
 
@@ -12,4 +12,4 @@ RUN dotnet restore
 COPY . ./
 RUN dotnet build
 
-RUN dotnet test Automation.Core.UnitTests --logger:trx
+RUN dotnet test src/Automation.Core.UnitTests --logger:trx
